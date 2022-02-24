@@ -26,7 +26,7 @@ statement, use your `HoroscopeContext` provider component and wrap it around
 `props.children`. Once you've finished, export your new provider component as a
 default.
 
-```js
+```jsx
 const HoroscopeProvider = props => {  
   return (
     <HoroscopeContext.Provider>
@@ -43,7 +43,7 @@ In your `Root` component, instead of using the `HoroscopeContext.Provider`
 component, wrap your `App` component with the `HoroscopeProvider` you just
 imported.
 
-```js
+```jsx
 const Root = () => {
   <HoroscopeProvider>
     <App />
@@ -85,8 +85,8 @@ Once you have created your `currentSign` state, pass `currentSign` and
 `setCurrentSign` as the value in your `HoroscopeContext.Provider`. It should
 look something like this:
 
-```javascript
-  <HoroscopeContext.Provider value={{ currentSign, setCurrentSign }}>
+```jsx
+<HoroscopeContext.Provider value={{ currentSign, setCurrentSign }}>
 ```
 
 Take another look at the React DevTools. If you click on the `Context.Provider`
@@ -139,13 +139,13 @@ look at your `horoscopesObj` data again to help you see what you need.
 
 Below is the object you're trying to access if your `currentSign` is `"Leo"`.
 
-```js
+```json
 {
   "name": "Leo",
   "date": "Jul 23 - Aug 22",
-  "element":"Fire",
+  "element": "Fire",
   "traits": "Proud, Bold, Ambitious",
-  "backgroundImg":"https://www.horoscope.com/images-US/signs/profile-leo.png",
+  "backgroundImg": "https://www.horoscope.com/images-US/signs/profile-leo.png",
   "match": "Libra"
 }
 ```
@@ -159,8 +159,8 @@ const sign = horoscopesObj[currentSign];
 Once you have successfully grabbed the object, set the `value` on the `Provider`
 to include `sign` instead of `currentSign`:
 
-```js
-    <HoroscopeContext.Provider value={{ sign, setCurrentSign }}>
+```jsx
+<HoroscopeContext.Provider value={{ sign, setCurrentSign }}>
 ```
 
 Back in your `Detail` component (__components/Detail.js__), destructure `sign`
