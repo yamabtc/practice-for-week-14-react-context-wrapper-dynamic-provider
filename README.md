@@ -26,12 +26,30 @@ statement, use your `HoroscopeContext` provider component and wrap it around
 `props.children`. Once you've finished, export your new provider component as a
 default.
 
+```js
+const HoroscopeProvider = props => {  
+  return (
+    <HoroscopeContext.Provider>
+      {props.children}
+    </HoroscopeContext.Provider>
+  );
+};
+```
+
 Next, navigate to __src/index.js__. This is where you will use your
 `HoroscopeProvider` component, so import the component at the top of your file.
 
 In your `Root` component, instead of using the `HoroscopeContext.Provider`
 component, wrap your `App` component with the `HoroscopeProvider` you just
 imported.
+
+```js
+const Root = () => {
+  <HoroscopeProvider>
+    <App />
+  </HoroscopeProvider>
+}  
+```
 
 If all went well, your sandbox browser should still look the same. However, if
 you look at your component tree, you should be able to see your
@@ -86,6 +104,10 @@ and `HoroscopeContext`. Inside your `Detail` component, now destructure
 `currentSign`, which comes from invoking `useContext` and passing in your
 `HoroscopeContext` as an argument.
 
+```js
+const { currentSign } = useContext(HoroscopeContext);
+```
+
 Keep in mind, when you use the `useContext` hook and pass the context in, the
 value you get back will be the object you passed in as your `value` prop to the
 context provider. In this case, the object will look like this (which is why you
@@ -126,6 +148,12 @@ Below is the object you're trying to access if your `currentSign` is `"Leo"`.
   "backgroundImg":"https://www.horoscope.com/images-US/signs/profile-leo.png",
   "match": "Libra"
 }
+```
+
+Your `sign` variable should look like this:
+
+```js
+const sign = horoscopesObj[currentSign];
 ```
 
 Once you have successfully grabbed the object, set the `value` on the `Provider`
