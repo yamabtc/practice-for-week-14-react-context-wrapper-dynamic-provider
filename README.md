@@ -27,7 +27,7 @@ statement, use your `HoroscopeContext` provider component and wrap it around
 default.
 
 ```jsx
-const HoroscopeProvider = props => {  
+const HoroscopeProvider = props => {
   return (
     <HoroscopeContext.Provider>
       {props.children}
@@ -45,10 +45,12 @@ imported.
 
 ```jsx
 const Root = () => {
-  <HoroscopeProvider>
-    <App />
-  </HoroscopeProvider>
-}  
+  return (
+    <HoroscopeProvider>
+      <App />
+    </HoroscopeProvider>
+  )
+}
 ```
 
 If all went well, your sandbox browser should still look the same. However, if
